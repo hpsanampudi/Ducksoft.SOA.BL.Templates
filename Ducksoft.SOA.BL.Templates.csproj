@@ -71,7 +71,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>xxx.Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\xxx.Repositories.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,6 +90,14 @@
   <ItemGroup>
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
+    <Content Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </Content>
+    <Content Include="Properties\Ducksoft.SOA.BL.Templates.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Ducksoft.SOA.BL.Templates.nuspec</LastGenOutput>
+    </Content>
     <Content Include="Infrastructure\xxxDBModel.Bindings.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>xxxDBModel.Bindings.cs</LastGenOutput>
@@ -102,8 +114,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>xxxDBModel.WcfService.cs</LastGenOutput>
     </Content>
-    <None Include="Ducksoft.SOA.BL.Templates.nuspec" />
     <None Include="Ducksoft.SOA.BL.Templates.pfx" />
+    <None Include="Properties\Ducksoft.SOA.BL.Templates.nuspec">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ducksoft.SOA.BL.Templates.tt</DependentUpon>
+    </None>
     <None Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
   </ItemGroup>
   <ItemGroup>
