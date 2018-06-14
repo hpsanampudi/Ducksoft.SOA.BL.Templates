@@ -7,6 +7,9 @@
 <#@ output extension=".cs" #>
 
 <#
+//********************************************************************************************************************
+// Note: While using the template first time, search and remove the comment code tags /* ... */ in T4 template
+//********************************************************************************************************************
 var code = new CodeGenerationTools(this);
 string codeNamespace = code.VsNamespaceSuggestion();
 
@@ -39,7 +42,6 @@ public partial interface I<#=appName#>Repository
 
 /// <summary>
 /// Class which is used to query entity set data through <#=appName#> data service.
-/// Note: Search and remove the comment code tags /* ... */ in T4 template
 /// </summary>
 public sealed partial class <#=appName#>Repository : /*EntityLoader<<#=appName#>Entities>,*/ I<#=appName#>Repository
 {
