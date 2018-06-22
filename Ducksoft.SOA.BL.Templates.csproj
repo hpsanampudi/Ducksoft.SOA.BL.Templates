@@ -43,8 +43,8 @@
     </T4ParameterValues>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Ducksoft.SOA.Common, Version=3.0.0.25591, Culture=neutral, PublicKeyToken=b021288588aff63b, processorArchitecture=MSIL">
-      <HintPath>packages\Ducksoft.SOA.Common.3.0.0.1\lib\net461\Ducksoft.SOA.Common.dll</HintPath>
+    <Reference Include="Ducksoft.SOA.Common, Version=3.0.0.5, Culture=neutral, PublicKeyToken=b021288588aff63b, processorArchitecture=MSIL">
+      <HintPath>packages\Ducksoft.SOA.Common.3.0.0.5\lib\net461\Ducksoft.SOA.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
