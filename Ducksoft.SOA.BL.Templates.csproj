@@ -35,6 +35,13 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Ducksoft.SOA.BL.Templates.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <!-- Set up common properties for T4 text templating -->
+  <ItemGroup>
+    <T4ParameterValues Include="BuildConfiguration">
+      <Value>$(Configuration)</Value>
+      <Visible>false</Visible>
+    </T4ParameterValues>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Ducksoft.SOA.Common, Version=3.0.0.25591, Culture=neutral, PublicKeyToken=b021288588aff63b, processorArchitecture=MSIL">
       <HintPath>packages\Ducksoft.SOA.Common.3.0.0.1\lib\net461\Ducksoft.SOA.Common.dll</HintPath>

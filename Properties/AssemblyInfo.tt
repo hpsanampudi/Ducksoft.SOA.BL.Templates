@@ -1,24 +1,45 @@
-﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
+<#@ parameter type="System.String" name="BuildConfiguration" #>
 <#
+
 	const string appName = "Templates";
 
 	//Note: While compiling this T4 template first time, create new Guid and replace the below one.
 	//var appId = Guid.NewGuid();
 	var appId = "35ab6541-6b73-446b-b3d9-190c21c7ec2e";
 
-	var date = DateTime.Now;
-    var major = 1;
-    var minor = date.ToString("yyyy");
-    var build = date.ToString("MMdd");
-    var revision = date.ToString("HHmm");
-#>
+	string configuration = Host.ResolveParameterValue("-", "-", "BuildConfiguration");
+	if (string.IsNullOrWhiteSpace(configuration))
+	{
+		var serviceProvider = (IServiceProvider)Host;
+		var dte = (EnvDTE.DTE)serviceProvider.GetService(typeof(EnvDTE.DTE));
+		configuration = dte.Solution.SolutionBuild.ActiveConfiguration.Name;
+	}
 
+	string data = File.ReadAllText(Host.ResolvePath("AssemblyInfo.cs"));
+    var pattern = "AssemblyVersion\\(\"(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<build>\\d+)\\.(?<revision>\\d+)\"\\)";
+	var match = Regex.Match(data, pattern);
+	if (match.Success)
+	{
+		major = Convert.ToInt32(match.Groups["major"].Value);
+        minor = Convert.ToInt32(match.Groups["minor"].Value);
+        build = Convert.ToInt32(match.Groups["build"].Value);
+        revision = Convert.ToInt32(match.Groups["revision"].Value);
+        if(configuration == "Release" )
+		{
+			revision++;
+		}            
+	}
+#>
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -49,8 +70,12 @@ using System.Runtime.InteropServices;
 //      Build Number - MonthDate
 //      Revision - HoursMinutes
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("<#= $"{major}.{minor}.{build}.{revision}" #>")]
 [assembly: AssemblyFileVersion("<#= $"{major}.{minor}.{build}.{revision}" #>")]
+
+<#+
+    int major = 2;
+    int minor = 0;
+    int revision = 0;
+    int build = 0;
+#>

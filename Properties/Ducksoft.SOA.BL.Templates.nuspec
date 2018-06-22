@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata minClientVersion="2.8">
     <id>Ducksoft.SOA.BL.Templates</id>
-    <version>1.2018.0613.1835</version>
+    <version>2.0.0.0</version>
     <title>Ducksoft.SOA.BL.Templates</title>
     <authors>hpsanampudi</authors>
     <owners>Duck Software Limited</owners>
@@ -16,3 +16,4 @@
     <tags>Ducksoft SOA BL Templates</tags>    
   </metadata>
 </package>
+
