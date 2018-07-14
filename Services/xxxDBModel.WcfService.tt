@@ -41,7 +41,7 @@ const string databaseNamespace = "";
 string projectNamespace = codeNamespace.Substring(0, codeNamespace.LastIndexOf('.'));
 //string projectNamespace = "";
 
-//const string edmxModelName = "xxxcrudModel";
+//const string edmxModelName = "xxxModel";
 const string edmxModelName = "";
 
 //string branchPath = new DirectoryInfo(Host.ResolvePath(@"..\\..")).FullName;
