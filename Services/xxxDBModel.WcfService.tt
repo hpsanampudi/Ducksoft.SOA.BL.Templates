@@ -82,6 +82,7 @@ if (!typeMapper.VerifyCaseInsensitiveTypeUniqueness(typeMapper.GetAllGlobalItems
 WriteHeader(codeStringGenerator, fileManager);
 BeginNamespace(code, codeNamespace);
 #>
+<#=codeStringGenerator.UsingDirectives(inHeader: false)#><#=codeStringGenerator.ExtraUsingDirectives(extraUsings)#>
 <#=codeStringGenerator.EntityClassComments(null, appName)#>
 [JSONPSupportBehavior, CustMsgHeaderBehavior, GlobalWcfErrorHandler]
 [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple,
@@ -113,7 +114,6 @@ public partial class <#=appName#>Service : I<#=appName#>WcfService, I<#=appName#
     }
 }
 
-<#=codeStringGenerator.UsingDirectives(inHeader: false)#><#=codeStringGenerator.ExtraUsingDirectives(extraUsings)#>
 <#
 foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection))
 {
